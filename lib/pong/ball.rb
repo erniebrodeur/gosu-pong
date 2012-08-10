@@ -9,21 +9,24 @@ module Pong
 		def initialize(window)
 			@x = @y = @z = 50.0
 			@vel_x = @vel_y = 10.0
-			@angle = 30.0
+			@angle = 15.0
 
 			@texture = Image.new Window, 'media/ball.png', false
 		end
 
 		def update
-			@vel_x = Gosu::offset_x(@angle, 2.5)
-			@vel_y = Gosu::offset_y(@angle, 2.5)
+			@vel_x = Gosu::offset_x(@angle, 5.0)
+			@vel_y = Gosu::offset_y(@angle, 5.0)
 
 			@x += @vel_x
 			@y += @vel_y
 
-			@angle -= 90.0 if @y < 0
-			@angle += 90.0 if @y > Window.height - @texture.height / 2.0
-			puts "#{@x}, #{y}"
+			if @y < @texture.height / 2.0 || @y > Window.height - (@texture.height / 2.0)
+				@angle = 180.0 - @angle
+				@vel_x = -@vel_x
+				@vel_y = -@vel_y
+			end
+
 		end
 
 		def draw
