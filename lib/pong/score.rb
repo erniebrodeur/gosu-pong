@@ -8,12 +8,14 @@ module Pong
     attr_accessor :score
 
     def initialize(player)
-      @x = @z = 0.0
-      if player.side = LEFT
-        @y = 20
+      if player.side == LEFT
+        @x = 20
       else
-        @y = Window.width - 100
+        @x = Window.width - 120
       end
+      @y = 20.0
+      @z = 0.0
+
       @score = 0
       @text = Font.new Window, 'aerial', 25
     end
