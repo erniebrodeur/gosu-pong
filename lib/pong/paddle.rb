@@ -4,13 +4,25 @@ module Pong
 
 		attr_accessor :texture
 		attr_accessor :x, :y, :z
-
-		def initialize(window)
+		attr_reader :player
+		def initialize(player)
+			@player = player
 			@x = @y = @z = 0.0
-			@texture = Image.new window, 'media/paddle.png', false
+			@texture = Image.new Window, 'media/paddle.png', false
 		end
 
 		def update
+			if player.side == LEFT
+					@y = @y - 5.0 if Window.button_down? Gosu::KbW
+					@y = @y + 5.0 if Window.button_down? Gosu::KbS
+			else
+					@y = @y - 5.0 if Window.button_down? Gosu::KbUp
+					@y = @y + 5.0 if Window.button_down? Gosu::KbDown
+			end
+
+			#bounding
+			@y = 0 if @y < 0
+			@y = Window.height - @texture.height if @y + @texture.height > Window.height
 		end
 
 		def draw

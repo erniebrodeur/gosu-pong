@@ -9,7 +9,7 @@ module Pong
 
 		def initialize(side)
 			@side = side
-	    @paddle = Paddle.new Window
+	    @paddle = Paddle.new self
 
   	  @paddle.y = (Window.height / 2.0) - (@paddle.texture.height / 2.0)
 

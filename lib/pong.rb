@@ -8,5 +8,4 @@ require 'pong/player'
 require 'pong/scene'
 
 module Pong
-
 end
