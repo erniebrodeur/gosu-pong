@@ -21,7 +21,7 @@ module Pong
     end
 
     def update
-      @score = @score + 1
+
     end
 
     def draw

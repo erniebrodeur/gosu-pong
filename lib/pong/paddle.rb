@@ -11,15 +11,14 @@ module Pong
 			@texture = Image.new Window, 'media/paddle.png', false
 			@y = (Window.height / 2.0) - (@texture.height / 2.0)
 
-	    if @side == LEFT
+	    if @player.side == LEFT
 	    	@x = 45
-	    elsif @side == RIGHT
+	    elsif @player.side == RIGHT
       	@x = Window.width - 75
 	    else
 	    	puts "WTF is this? @side == #{@side}"
-	    	die
+	    	exit
 	    end
-
 		end
 
 		def update

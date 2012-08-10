@@ -10,7 +10,6 @@ module Pong
 		def initialize(side)
 			@side = side
 	    @paddle = Paddle.new self
-
       @score = Score.new self
 		end
 
