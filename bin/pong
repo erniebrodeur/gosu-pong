@@ -3,5 +3,5 @@
 require 'pong'
 include Pong
 
-window = GameWindow.new
-window.show
+Window.scene = Pong::Scene.new
+Window.show

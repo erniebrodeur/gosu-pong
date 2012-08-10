@@ -7,11 +7,15 @@ module Pong
     attr_accessor :x, :y, :z
     attr_accessor :score
 
-    def initialize(window)
-      @x = @y = @z = 0.0
+    def initialize(player)
+      @x = @z = 0.0
+      if player.side = LEFT
+        @y = 20
+      else
+        @y = Window.width - 100
+      end
       @score = 0
-      @texture = Image.from_text window, 'score', 'consola', 50, 0, 200, :left
-      @text = Font.new window, 'aerial', 25
+      @text = Font.new Window, 'aerial', 25
     end
 
     def update
@@ -19,9 +23,7 @@ module Pong
     end
 
     def draw
-      #@texture.draw @x, @y, @z
       @text.draw("score: #{score}", @x, @y, @z)
-
     end
   end
 end

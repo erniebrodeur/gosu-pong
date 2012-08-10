@@ -7,7 +7,7 @@ module Pong
 
 		def initialize(window)
 			@x = @y = @z = 50.0
-			@texture = Image.new window, 'media/ball.png', false
+			@texture = Image.new Window, 'media/ball.png', false
 		end
 
 		def update
