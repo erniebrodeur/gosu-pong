@@ -11,16 +11,6 @@ module Pong
 			@side = side
 	    @paddle = Paddle.new self
 
-  	  @paddle.y = (Window.height / 2.0) - (@paddle.texture.height / 2.0)
-
-	    if @side == LEFT
-	    	@paddle.x = 45
-	    elsif @side == RIGHT
-      	@paddle.x = Window.width - 75
-	    else
-	    	puts "WTF is this? @side == #{@side}"
-	    	die
-	    end
       @score = Score.new self
 		end
 
