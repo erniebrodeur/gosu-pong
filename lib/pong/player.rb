@@ -13,6 +13,10 @@ module Pong
       @score = Score.new self
 		end
 
+		def reset
+			@paddle.reset
+		end
+
 		def update
 			@paddle.update
 			@score.update

@@ -5,20 +5,25 @@ module Pong
 		attr_accessor :texture
 		attr_accessor :x, :y, :z
 		attr_reader :player
+		attr_reader :offset
+
 		def initialize(player)
 			@player = player
-			@x = @y = @z = 0.0
 			@texture = Image.new Window, 'media/paddle.png', false
-			@y = (Window.height / 2.0) - (@texture.height / 2.0)
 
-	    if @player.side == LEFT
-	    	@x = 45
-	    elsif @player.side == RIGHT
-      	@x = Window.width - 75
+			if @player.side == LEFT
+	    	@offset = 45
 	    else
-	    	puts "WTF is this? @side == #{@side}"
-	    	exit
+	    	@offset = Window.width - 75
 	    end
+
+	    reset
+		end
+
+		def reset
+			@x = @offset
+			@y = (Window.height / 2.0) - (@texture.height / 2.0)
+			@z = 0.0
 		end
 
 		def update
@@ -30,7 +35,7 @@ module Pong
 					@y = @y + 5.0 if Window.button_down? Gosu::KbDown
 			end
 
-			#bounding
+			#top/bottom bounding
 			@y = 0 if @y < 0
 			@y = Window.height - @texture.height if @y + @texture.height > Window.height
 		end
